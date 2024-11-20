@@ -1,0 +1,34 @@
+class Endereco {
+  String rua;
+  String cidade;
+
+  Endereco(this.rua, this.cidade);
+
+  void mostrarEndereco() {
+    print('Endereço: $rua, $cidade');
+  }
+}
+
+class Pessoa {
+  String nome;
+  Endereco endereco; // Agregação: Pessoa "tem um" Endereço
+
+  Pessoa(this.nome, this.endereco);
+
+  void mostrarPessoa() {
+    print('Nome: $nome');
+    endereco.mostrarEndereco();
+  }
+}
+
+void main() {
+  // endereço criado
+  Endereco meuEndereco = Endereco('Rua Pomar Carioca', 'Fortaleza');
+
+  // pessoa com agregação com endereço
+  Pessoa pessoa = Pessoa('Nagyla Freires', meuEndereco);
+
+  // dados
+  pessoa.mostrarPessoa();
+
+-----> NAO CONSEGUIR ENVIAR O CODIGO COM O VS CODE E NEM NO TERMINAL 
