@@ -176,3 +176,5 @@ class DetailPage extends StatelessWidget {
     );
   }
 }
+
+// DUPLA: NAGYLA FREIRES E MARINA SILVA
