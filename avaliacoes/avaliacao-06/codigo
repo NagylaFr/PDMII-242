@@ -1,0 +1,123 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+      ),
+      home: const Tela1(),
+    );
+  }
+}
+
+class Tela1 extends StatefulWidget {
+  const Tela1({super.key});
+
+  @override
+  State<Tela1> createState() => _Tela1State();
+}
+
+class _Tela1State extends State<Tela1> {
+  int _contador = 0;
+
+  void _incrementar() {
+    setState(() {
+      _contador++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Flutter Demo Home Page')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Você pressionou o botão esta quantidade de vezes:'),
+            Text('$_contador', style: const TextStyle(fontSize: 24)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Tela2()),
+                );
+              },
+              child: const Text('Ir para Tela 2'),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementar,
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class Tela2 extends StatelessWidget {
+  const Tela2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tela 2')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Tela 2', style: TextStyle(fontSize: 24)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Tela3()),
+                );
+              },
+              child: const Text('Ir para Tela 3'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Tela3 extends StatelessWidget {
+  const Tela3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tela 3')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Tela 3', style: TextStyle(fontSize: 24)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              child: const Text('Voltar para Tela 1'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
